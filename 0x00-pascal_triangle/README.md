@@ -1,0 +1,1 @@
+Contains a function that calaculates the binomial coefficients in the pascal's triangle and appends them into a list of lists for the triangle rows. The function returns the list of lists of the pascal's triangle coefficients. The function takes in an integer  representing the number of rows in the pascal's triangle.
