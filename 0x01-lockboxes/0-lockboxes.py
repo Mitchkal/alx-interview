@@ -1,4 +1,4 @@
-#!/usr/bn/python3
+#!/usr/bin/python3
 """
 Method to determine if all lockboxes are opened
 """
