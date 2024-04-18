@@ -1,17 +1,17 @@
 #!/usr/bin/node
 
-const request = require("request");
+const request = require('request');
 
 const movieId = process.argv[2];
 const apiUrl = `https://swapi.dev/api/films/${movieId}/`;
 
 if (!movieId) {
-  console.error("Provide Movie Id as argument");
+  console.error('Provide Movie Id as argument');
   process.exit(1);
 }
 request(apiUrl, (error, response, body) => {
   if (error) {
-    console.error("Failed to fetch data:", error);
+    console.error('Failed to fetch data:', error);
     return;
   }
   if (response.statusCode === 200) {
@@ -22,7 +22,7 @@ request(apiUrl, (error, response, body) => {
       if (index < characterUrls.length) {
         request(characterUrls[index], (error, response, body) => {
           if (error) {
-            console.error("Failed to fetch data:", error);
+            console.error('Failed to fetch data:', error);
             return;
           }
           if (response.statusCode === 200) {
@@ -37,7 +37,7 @@ request(apiUrl, (error, response, body) => {
     fetchCharacterDetails(0);
   } else {
     console.error(
-      "Failed to fetch movie data. HTTP Status Code:",
+      'Failed to fetch movie data. HTTP Status Code:',
       response.statusCode
     );
   }
