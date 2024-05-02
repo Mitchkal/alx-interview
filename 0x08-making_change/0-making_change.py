@@ -17,14 +17,14 @@ def makeChange(coins, total):
     # coin length list
     m = len(coins)
 
-    table = [sys.maxsize] * (total + 1)
+    table = [float('inf')] * (total + 1)
     table[0] = 0
 
-    for i in range(1, total + 1):
-        for j in range(m):
-            if coins[j] <= i:
-                combo = table[i - coins[j]]
-                if combo != sys.maxsize and combo + 1 < table[i]:
-                    table[i] = combo + 1
+    for coin in coins:
+        for i in range(coin, total + 1):
 
-    return table[total] if table[total] != sys.maxsize else -1
+            if table[i - coin] + 1 < table[i]:
+
+                table[i] = table[i - coin] + 1
+
+    return table[total] if table[total] != float('inf') else -1
