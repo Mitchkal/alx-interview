@@ -11,6 +11,7 @@ def sieve(n):
     n using sieve of Erastothenes
     """
     is_prime = [True] * (n + 1)
+    is_prime[0] = False
     p = 2
     while(p * p <= n):
 
@@ -39,6 +40,9 @@ def isWinner(x, nums):
     determines if Maria(1) OR ben (0)
     wins for given n
     """
+    if not nums or x <= 0:
+        return None
+
     max_n = max(nums)
     primes = sieve(max_n)
     dp = [-1] * (max_n + 1)
@@ -55,10 +59,7 @@ def isWinner(x, nums):
             return dp[n]
 
         primes_count = prime_count_up_to(n, primes)
-        if primes_count % 2 == 1:
-            dp[n] = 1
-        else:
-            dp[n] = 0
+        dp[n] = 1 if primes_count % 2 == 1 else 0
 
         return dp[n]
 
